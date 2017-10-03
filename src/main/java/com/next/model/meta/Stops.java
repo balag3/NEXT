@@ -7,6 +7,6 @@ import lombok.Setter;
 @Setter
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
-class Stops {
+public class Stops {
 
 }

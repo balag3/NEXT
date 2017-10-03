@@ -1,4 +1,4 @@
-package com.next.model.concrete;
+package com.next.model.concrete.vehicle;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-class Location {
+public class Location {
 
     @JsonProperty("lon")
     private Double lon;

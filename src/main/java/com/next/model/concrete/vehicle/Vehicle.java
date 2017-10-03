@@ -1,14 +1,18 @@
-package com.next.model.concrete;
+package com.next.model.concrete.vehicle;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.next.configuration.EntryDeserializer;
+import com.next.model.meta.Entry;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Vehicle {
+@JsonDeserialize(using = EntryDeserializer.None.class)
+public class Vehicle extends Entry{
 
     @JsonProperty("serviceDate")
     private String serviceDate;

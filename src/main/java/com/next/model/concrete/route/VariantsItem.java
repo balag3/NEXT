@@ -1,4 +1,4 @@
-package com.next.model.concrete;
+package com.next.model.concrete.route;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-class VariantsItem {
+public class VariantsItem {
 
     @JsonProperty("headsign")
     private String headsign;

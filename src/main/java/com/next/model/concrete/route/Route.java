@@ -1,7 +1,11 @@
-package com.next.model.concrete;
+package com.next.model.concrete.route;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.next.configuration.EntryDeserializer;
+import com.next.model.meta.Entry;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +15,9 @@ import java.util.List;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Route {
+@JsonTypeName("route")
+@JsonDeserialize(using = EntryDeserializer.None.class)
+public class Route extends Entry {
 
     @JsonProperty("iconDisplayType")
     private String iconDisplayType;

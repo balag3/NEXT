@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-class References {
+public class References {
 
     @JsonProperty("alerts")
     private Alerts alerts;
