@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class Groups {
+
     @JsonProperty("ZuglĂł vasĂştĂĄllomĂĄs")
     private ZuglVasTLlomS zuglVasTLlomS;
 }

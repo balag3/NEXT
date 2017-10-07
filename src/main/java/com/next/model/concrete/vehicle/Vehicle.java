@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = EntryDeserializer.None.class)
-public class Vehicle extends Entry{
+public class Vehicle extends Entry {
 
     @JsonProperty("serviceDate")
     private String serviceDate;

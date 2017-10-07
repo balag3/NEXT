@@ -22,18 +22,25 @@ public class Stop extends Entry {
 
     @JsonProperty("code")
     private String code;
+
     @JsonProperty("name")
     private String name;
+
     @JsonProperty("locationType")
     private Integer locationType;
+
     @JsonProperty("lon")
     private Double lon;
+
     @JsonProperty("id")
     private String id;
+
     @JsonProperty("routeIds")
     private List<String> routeIds;
+
     @JsonProperty("lat")
     private Double lat;
+
     @JsonProperty("direction")
     private String direction;
 }

@@ -10,10 +10,13 @@ import java.util.List;
 
 
 public class SchedulesItem {
+
     @JsonProperty("routeId")
     private String routeId;
+
     @JsonProperty("alertIds")
     private List alertIds;
+
     @JsonProperty("directions")
     private List<DirectionsItem> directions;
 }

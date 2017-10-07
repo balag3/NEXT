@@ -11,11 +11,14 @@ import java.util.List;
 
 
 public class DirectionsItem {
+
     @JsonProperty("directionId")
     private String directionId;
+
     @JsonIgnore
     @JsonProperty("groups")
     private Groups groups;
+
     @JsonProperty("stopTimes")
     private List<StopTimesItem> stopTimes;
 }
