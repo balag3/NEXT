@@ -1,6 +1,7 @@
 package com.next.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
@@ -15,6 +16,15 @@ public class StopService {
 	private BKKService bkkService;
 	@Autowired
 	private StopRepository stopRepository;
+	@Autowired
+	private TaskExecutor executor;
+
+	private Stop readAndSaveStop(String id) {
+		ApiResponse response = bkkService.getScheduleForStop(id);
+		Stop stop = null; // TODO: build internal.Stop from response
+		stopRepository.save(stop);
+		return stop;
+	}
 
 	public Stop read(String id) {
 		Assert.hasText(id, "No id present!");
@@ -22,12 +32,14 @@ public class StopService {
 		Stop stop = null;
 		if (stopRepository.exists(id)) {
 			stop = stopRepository.findOne(id);
+		} else {
+			stop = readAndSaveStop(id);
 		}
 
-		if (stop == null || (stop != null && stop.isOutDated())) {
-			ApiResponse response = bkkService.getScheduleForStop(id);
-			stop = null; // TODO: build internal.Stop from response
-			stopRepository.save(stop);
+		Assert.notNull(stop, "Stop cannot be found!");
+
+		if (stop.isOutDated()) {
+			executor.execute(() -> readAndSaveStop(id));
 		}
 
 		return stop;
