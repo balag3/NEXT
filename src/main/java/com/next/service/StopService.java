@@ -5,14 +5,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import com.next.model.internal.Stop;
+import com.next.model.meta.ApiResponse;
 import com.next.repository.StopRepository;
-import com.next.service.bkk.BkkService;
 
 @Service
 public class StopService {
 
 	@Autowired
-	private BkkService bkkService;
+	private BKKService bkkService;
 	@Autowired
 	private StopRepository stopRepository;
 
@@ -25,7 +25,8 @@ public class StopService {
 		}
 
 		if (stop == null || (stop != null && stop.isOutDated())) {
-			stop = bkkService.readStop(id);
+			ApiResponse response = bkkService.getScheduleForStop(id);
+			stop = null; // TODO: build internal.Stop from response
 			stopRepository.save(stop);
 		}
 
