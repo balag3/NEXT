@@ -6,7 +6,7 @@ package com.next.model.concrete.schedule;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
+// XXX: WTF???
 public class ZuglVasTLlomS {
 
     @JsonProperty("headsign")

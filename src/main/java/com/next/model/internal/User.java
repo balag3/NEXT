@@ -8,5 +8,5 @@ public class User {
 
 	@Id
 	public String id;
-
+	// TODO: include all the members, fix modifiers, add accessors
 }

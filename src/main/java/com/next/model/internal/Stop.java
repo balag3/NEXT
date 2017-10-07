@@ -11,6 +11,7 @@ public class Stop {
 	@Id
 	public String id;
 	public long lastFetched;
+	// TODO: include all the members, fix modifiers, add accessors
 
 	public boolean isOutDated() {
 		return lastFetched + EXPIRATION < System.currentTimeMillis();

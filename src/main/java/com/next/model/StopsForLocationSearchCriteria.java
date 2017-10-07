@@ -8,6 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
+// TODO: no need for criteria object here, just pass lat, lon, radius as separate parameters to bkkService, keep it simple and stupid :)
 public class StopsForLocationSearchCriteria {
 
     @NonNull
