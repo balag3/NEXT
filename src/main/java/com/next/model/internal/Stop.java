@@ -12,6 +12,7 @@ public class Stop {
 	public String id;
 	public long lastFetched;
 	// TODO: include other properties we need on our side, fix modifiers, add accessors
+	// e.g. List<Schedule> schedules; storing the latest list of schedules for this stop
 
 	public boolean isOutDated() {
 		return lastFetched + EXPIRATION < System.currentTimeMillis();
