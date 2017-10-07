@@ -25,9 +25,9 @@ public class StopController {
 
 	@GetMapping(value = "/lat/{lat}/lon/{lon}/radius/{radius}")
 	public ApiResponse getStopsForLocation(@PathVariable("lat") String lat, @PathVariable("lon") String lon, @PathVariable("radius") String radius) {
-
 		// TODO: no need for criteria object here, just pass lat, lon, radius as separate parameters to bkkService, keep it simple and stupid :)
 		StopsForLocationSearchCriteria criteria = StopsForLocationSearchCriteria.builder().lat(lat).lon(lon).radius(radius).build();
+		// TODO: do not send an entire ApiResponse on client side, just an internal model of the needed properties
 		return bkkService.getStopsForLocation(criteria);
 	}
 
