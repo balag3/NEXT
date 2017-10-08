@@ -1,6 +1,5 @@
 package com.next.service;
 
-import com.next.model.StopsForLocationSearchCriteria;
 import com.next.model.meta.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,18 +54,13 @@ public class BKKService {
         return httpService.get(uri);
     }
 
-    public ApiResponse getStopsForLocation(StopsForLocationSearchCriteria criteria) {
+    public ApiResponse getStopsForLocation(String lat, String lon, String radius) {
         UriComponents uriComponents = UriComponentsBuilder.fromHttpUrl(stopsForLocation)
                 .query("lat={lat}")
                 .query("lat={lon}")
                 .query("radius={radius}")
                 .query("includeReferences=false")
-                .buildAndExpand(
-                        criteria.getLat(),
-                        criteria.getLon(),
-                        criteria.getRadius()
-                );
-        System.out.println(uriComponents.toUriString());
+                .buildAndExpand(lat, lon, radius);
         String uri = uriComponents.toUriString();
         return httpService.get(uri);
     }

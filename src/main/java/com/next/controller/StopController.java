@@ -1,15 +1,16 @@
 package com.next.controller;
 
+import com.next.model.internal.StopInfo;
+import com.next.model.meta.ApiResponse;
+import com.next.service.BKKService;
+import com.next.service.StopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.next.model.StopsForLocationSearchCriteria;
-import com.next.model.meta.ApiResponse;
-import com.next.service.BKKService;
-import com.next.service.StopService;
+import java.util.List;
 
 @RestController
 @RequestMapping("/stop")
@@ -17,6 +18,9 @@ public class StopController {
 
 	@Autowired
 	BKKService bkkService;
+
+	@Autowired
+	StopService stopService;
 	
 	@GetMapping
 	public ApiResponse stops() {
@@ -24,11 +28,8 @@ public class StopController {
 	}
 
 	@GetMapping(value = "/lat/{lat}/lon/{lon}/radius/{radius}")
-	public ApiResponse getStopsForLocation(@PathVariable("lat") String lat, @PathVariable("lon") String lon, @PathVariable("radius") String radius) {
-		// TODO: no need for criteria object here, just pass lat, lon, radius as separate parameters to bkkService, keep it simple and stupid :)
-		StopsForLocationSearchCriteria criteria = StopsForLocationSearchCriteria.builder().lat(lat).lon(lon).radius(radius).build();
-		// TODO: do not send an entire ApiResponse on client side, just an internal model of the needed properties
-		return bkkService.getStopsForLocation(criteria);
+	public List<StopInfo> getStopsForLocation(@PathVariable("lat") String lat, @PathVariable("lon") String lon, @PathVariable("radius") String radius) {
+		return stopService.getStopInfo(lat, lon, radius);
 	}
 
 }
