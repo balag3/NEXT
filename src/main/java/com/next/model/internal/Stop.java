@@ -20,7 +20,7 @@ public class Stop {
 
 	private long lastFetched;
 
-	private Schedule schedule;
+	private Schedule schedule; // TODO: should be a simplified model also from .internal
 
 	public boolean isOutDated() {
 		return lastFetched + EXPIRATION < System.currentTimeMillis();
