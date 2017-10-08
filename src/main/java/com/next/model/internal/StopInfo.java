@@ -12,7 +12,6 @@ import java.util.List;
 @Builder
 public class StopInfo {
 
-    @Id
     private String id;
 
     private String name;
