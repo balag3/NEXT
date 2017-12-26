@@ -1,5 +1,6 @@
 package com.next.service;
 
+import com.next.exception.BkkApiException;
 import com.next.model.concrete.schedule.Schedule;
 import com.next.model.internal.Stop;
 import com.next.model.internal.StopInfo;
@@ -17,15 +18,24 @@ import java.util.stream.Collectors;
 @Service
 public class StopService {
 
+	private final static String API_SUCCESS = "OK";
+
 	@Autowired
 	private BKKService bkkService;
+
 	@Autowired
 	private StopRepository stopRepository;
+
 	@Autowired
 	private TaskExecutor executor;
 
 	private Stop readAndSaveStop(String id) {
 		ApiResponse response = bkkService.getScheduleForStop(id);
+
+		if (!API_SUCCESS.equals(response.getStatus())) {
+			throw new BkkApiException(response.getText());
+		}
+
 		Schedule schedule = (Schedule) response.getData().getEntry();
 
 		Stop stop = Stop.builder()

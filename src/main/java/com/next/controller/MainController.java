@@ -1,14 +1,12 @@
 package com.next.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController(value = "/")
+//@Controller
 public class MainController {
 
-    @RequestMapping
-    public String welcome() {
-        return "Welcome!";
-    }
+//    @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
+//    public String welcome(Model model, Principal principal) {
+//        System.out.println(principal.getName());
+//        return "welcome";
+//    }
 
 }

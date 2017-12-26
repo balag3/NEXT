@@ -57,7 +57,7 @@ public class BKKService {
     public ApiResponse getStopsForLocation(String lat, String lon, String radius) {
         UriComponents uriComponents = UriComponentsBuilder.fromHttpUrl(stopsForLocation)
                 .query("lat={lat}")
-                .query("lat={lon}")
+                .query("lon={lon}")
                 .query("radius={radius}")
                 .query("includeReferences=false")
                 .buildAndExpand(lat, lon, radius);
