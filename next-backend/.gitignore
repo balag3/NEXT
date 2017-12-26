@@ -1,0 +1,11 @@
+/target/
+*.log
+*.properties
+### MAVEN ###
+.mvn/
+mvnw
+mvnw.cmd
+
+### IntelliJ IDEA ###
+.idea
+*.iml
