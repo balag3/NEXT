@@ -24,10 +24,10 @@ public class StopController {
         return stopService.getAllStops();
     }
 
-    @GetMapping(value = "/{radius}/centerLat/{lat}/centerLon/{lon}")
+    @GetMapping(value = "/centerLat/{lat}/centerLon/{lon}/radius/{radius}")
     public List<StopDTO> stopsByRadius(@PathVariable("radius") Integer radius,
-                                       @PathVariable("centerLat") Double lat,
-                                       @PathVariable("centerLon") Double lon) {
+                                       @PathVariable("lat") Double lat,
+                                       @PathVariable("lon") Double lon) {
         Location center = new Location();
         center.setLat(lat);
         center.setLon(lon);
