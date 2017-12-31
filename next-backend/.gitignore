@@ -1,6 +1,5 @@
 /target/
 *.log
-*.properties
 ### MAVEN ###
 .mvn/
 mvnw
