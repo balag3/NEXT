@@ -3,14 +3,13 @@ package com.next.model.internal;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 
 import java.util.List;
 
 @Getter
 @Setter
 @Builder
-public class StopInfo {
+public class StopDTO {
 
     private String id;
 

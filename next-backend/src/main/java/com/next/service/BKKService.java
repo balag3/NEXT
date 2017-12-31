@@ -15,9 +15,9 @@ public class BKKService {
     private static final String allRoutesEndpoint = "http://futar.bkk.hu/bkk-utvonaltervezo-api/ws/otp/api/where/routes-for-agency.json";
     private static final String allVehiclesEndpoint = "http://futar.bkk.hu/bkk-utvonaltervezo-api/ws/otp/api/where/vehicles-for-location.json";
     //schedule
-    private static String schedule = "http://futar.bkk.hu/bkk-utvonaltervezo-api/ws/otp/api/where/schedule-for-stop.json";
-    private static String stopsForLocation = "http://futar.bkk.hu/bkk-utvonaltervezo-api/ws/otp/api/where/stops-for-location.json";
-    private static String routeDetails = "http://futar.bkk.hu/bkk-utvonaltervezo-api/ws/otp/api/where/route-details.json";
+    private static final String schedule = "http://futar.bkk.hu/bkk-utvonaltervezo-api/ws/otp/api/where/schedule-for-stop.json";
+    private static final String stopsForLocation = "http://futar.bkk.hu/bkk-utvonaltervezo-api/ws/otp/api/where/stops-for-location.json";
+    private static final String routeDetails = "http://futar.bkk.hu/bkk-utvonaltervezo-api/ws/otp/api/where/route-details.json";
 
 
     @Autowired

@@ -1,8 +1,7 @@
 package com.next.controller;
 
-import com.next.model.internal.StopInfo;
-import com.next.model.meta.ApiResponse;
-import com.next.service.BKKService;
+import com.next.model.concrete.vehicle.Location;
+import com.next.model.internal.StopDTO;
 import com.next.service.StopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,20 +15,23 @@ import java.util.List;
 @RequestMapping("/stop")
 public class StopController {
 
-	@Autowired
-	BKKService bkkService;
+    @Autowired
+    StopService stopService;
 
-	@Autowired
-	StopService stopService;
-	
-	@GetMapping
-	public ApiResponse stops() {
-		return bkkService.getAllStops();
-	}
+    //exclude from production
+    @GetMapping
+    public List<StopDTO> getAllStops() {
+        return stopService.getAllStops();
+    }
 
-	@GetMapping(value = "/lat/{lat}/lon/{lon}/radius/{radius}")
-	public List<StopInfo> getStopsForLocation(@PathVariable("lat") String lat, @PathVariable("lon") String lon, @PathVariable("radius") String radius) {
-		return stopService.getStopInfo(lat, lon, radius);
-	}
+    @GetMapping(value = "/{radius}/centerLat/{lat}/centerLon/{lon}")
+    public List<StopDTO> stopsByRadius(@PathVariable("radius") Integer radius,
+                                       @PathVariable("centerLat") Double lat,
+                                       @PathVariable("centerLon") Double lon) {
+        Location center = new Location();
+        center.setLat(lat);
+        center.setLon(lon);
+        return stopService.stopsByRadius(radius, center);
+    }
 
 }
